@@ -1,1 +1,517 @@
-a
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI信仰助手 - WhatsApp屬靈成長伴侶</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #25D366;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --text-light: #666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 頭部樣式 */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.03"/></svg>');
+            background-size: cover;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            background-color: #1da851;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 10px;
+        }
+        
+        /* 簡介部分 */
+        .intro {
+            padding: 80px 0;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .intro p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .highlight-box {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+        }
+        
+        /* 功能部分 */
+        .features {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        /* 使用方式部分 */
+        .how-to-use {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* 聲明部分 */
+        .disclaimer {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .disclaimer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .disclaimer h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .disclaimer p {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        /* 底部 */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* 回應式設計 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .intro h2 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            header {
+                padding: 70px 0 50px;
+            }
+            
+            .intro, .features, .how-to-use {
+                padding: 50px 0;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頭部 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>WhatsApp AI信仰助手</span>
+            </div>
+            <h1>陪你查經、靈修、閱讀、解惑</h1>
+            <p class="tagline">讓屬靈成長融入每一個需要光的日常，透過WhatsApp隨時陪伴你的信仰旅程</p>
+            <a href="#cta" class="cta-button">
+                <i class="fab fa-whatsapp whatsapp-icon"></i> 開始使用 AI 信仰助手
+            </a>
+        </div>
+    </header>
+
+    <!-- 簡介 -->
+    <section class="intro">
+        <div class="container">
+            <h2>在這個資訊紛雜的時代，讓信仰紮根於生活</h2>
+            <p>我們常渴望親近神的話語，卻難以靜心；想要深入查經，卻不知從何開始；期待每日靈修，卻缺乏合適的引導。</p>
+            <div class="highlight-box">
+                <p>如果有一位安靜、可靠、紮根真理的夥伴，能隨時陪你走這段屬靈道路，會不會讓你的信仰生活更踏實、更有方向？</p>
+                <p>AI信仰助手就是這樣一位夥伴，透過你熟悉的WhatsApp，像朋友般陪你查經、靈修、閱讀、解惑。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">四大核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-bible"></i>
+                    </div>
+                    <h3>智能查經夥伴</h3>
+                    <p>只需輸入經卷章節，AI將以清晰的OIA歸納式查經法，帶你進入經文的背景、觀察文意、解釋真理，並提供生活化的反思問題。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>個人化靈修引導</h3>
+                    <p>AI會先詢問你的近況與心情，再根據你的需要，從聖經中選取合適的話語，陪你默想、禱告，讓靈修成為與神真實的相遇。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>深度閱讀導師</h3>
+                    <p>面對有價值卻難啃的屬靈書籍，AI已為你讀過、整理精華。你可以隨時提問、探討書中觀念，獲得反思提問。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>信仰疑難陪伴</h3>
+                    <p>關於信仰的困惑、生活的掙紮，AI將基於聖經與真理資料庫，提供溫暖而紮實的回應，陪你梳理思路、尋找亮光。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用方式 -->
+    <section class="how-to-use">
+        <div class="container">
+            <h2 class="section-title">簡單三步，開始使用</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>添加至 WhatsApp</h3>
+                    <p>透過連結將AI信仰助手加入你的WhatsApp聯絡人</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>開始對話</h3>
+                    <p>像與朋友聊天一樣，向AI助手提出你的需求</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>體驗智能輔助</h3>
+                    <p>開始查經、靈修、閱讀或解決信仰疑問</p>
+                </div>
+            </div>
+            
+            <div id="cta" style="text-align: center; margin-top: 60px;">
+                <a href="#" class="cta-button">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> 立即體驗 AI 信仰助手
+                </a>
+                <p style="margin-top: 20px; color: var(--text-light);">完全免費體驗 | 隱私保護 | 24小時可用</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聲明 -->
+    <section class="disclaimer">
+        <div class="container">
+            <div class="disclaimer-content">
+                <h3>我們的信念</h3>
+                <p>AI 助理僅為輔助工具，不能取代神、人的思想與屬靈群體的作用。它更像是一位隨時在旁的屬靈小助手，在你忙碌、孤單或渴慕成長時，默默為你點一盞燈，陪你更多認識神的話、更穩健地行走天路。</p>
+                <p style="margin-top: 15px; font-weight: bold;">讓科技成為信仰的幫助，而非取代。一切目的是幫助我們在真理中更自由、更專注地成長。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i> AI信仰助手
+                </div>
+                <p>讓屬靈成長融入每一個需要光的日常</p>
+                <p>透過科技，讓信仰生活更深入、更個人化</p>
+                
+                <div class="copyright">
+                    <p>© 2026 AI信仰助手 屬靈成長伴侶</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem;">此為概念展示頁面，實際功能可能有所不同</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // CTA按鈕點擊事件
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('感謝您的興趣！AI信仰助手即將推出，請關注我們的更新通知。');
+            });
+        });
+        
+        // 添加滾動效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollPosition = window.scrollY;
+            
+            if(scrollPosition > 50) {
+                header.style.padding = '60px 0 40px';
+            } else {
+                header.style.padding = '100px 0 80px';
+            }
+            
+            // 功能卡片動畫
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if(cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // 初始化功能卡片
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // 觸發初始動畫
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
