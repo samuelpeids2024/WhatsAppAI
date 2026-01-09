@@ -105,6 +105,347 @@
             padding: 0 20px;
         }
         
+        /* 效果展示區 */
+        .screenshots {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e8f1fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screenshots::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,50 Q25,40 50,50 T100,50 V100 H0 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+        
+        /* 截圖展示區 */
+        .screenshot-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .screenshot-item {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .screenshot-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .screenshot-image {
+            flex: 1;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+        }
+        
+        .screenshot-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .screenshot-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .screenshot-image::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px 10px 0 0;
+            z-index: 1;
+        }
+        
+        .screenshot-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .screenshot-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .screenshot-title i {
+            color: var(--accent);
+        }
+        
+        .screenshot-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .screenshot-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .screenshot-features li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text);
+        }
+        
+        .screenshot-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* 截圖標籤 */
+        .screenshot-label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .screenshot-item:nth-child(even) .screenshot-label {
+            right: auto;
+            left: 20px;
+        }
+        
+        /* 手機框架效果 */
+        .phone-frame {
+            position: relative;
+            padding: 40px 15px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 280px;
+            margin: 0 auto;
+        }
+        
+        .phone-frame::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+        }
+        
+        .phone-frame::after {
+            content: "";
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+        }
+        
+        .phone-frame img {
+            border-radius: 20px;
+            width: 100%;
+            height: auto;
+        }
+        
+        /* 截圖畫廊（小圖預覽） */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* 用戶見證區 */
+        .testimonials {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 992px) {
+            .screenshot-item {
+                flex-direction: column !important;
+                gap: 30px;
+            }
+            
+            .screenshot-image {
+                max-width: 100%;
+            }
+            
+            .screenshot-label {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .screenshot-item:nth-child(even) .screenshot-label {
+                left: 15px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .screenshots {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .screenshot-item {
+                padding: 25px;
+            }
+            
+            .screenshot-title {
+                font-size: 1.5rem;
+            }
+            
+            .phone-frame {
+                max-width: 220px;
+                padding: 30px 10px;
+            }
+        }
+        
         /* 頭部樣式 */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -490,6 +831,151 @@
         </div>
     </section>
 
+    <!-- 效果展示區 - 放在功能介紹之後 -->
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <h2 class="section-title">實際使用效果展示</h2>
+            <p class="section-subtitle">看看實際用戶如何使用AI信仰助手，體驗智能查經、靈修引導和信仰陪伴</p>
+            
+            <div class="screenshot-container">
+                <!-- 截圖項目 1: 查經功能 -->
+                <div class="screenshot-item">
+                    <span class="screenshot-label">查經功能</span>
+                    <div class="screenshot-image">
+                        <div class="phone-frame">
+                            <img src="https://via.placeholder.com/250x500/4a6fa5/ffffff?text=查經功能截圖" alt="AI查經功能截圖">
+                        </div>
+                    </div>
+                    <div class="screenshot-content">
+                        <h3 class="screenshot-title">
+                            <i class="fas fa-book-bible"></i> 智能查經對話實例
+                        </h3>
+                        <p class="screenshot-description">
+                            用戶詢問約翰福音3:16的解釋，AI助手提供完整的OIA分析：
+                            觀察經文結構、解釋關鍵詞義、應用於現代生活。
+                        </p>
+                        <ul class="screenshot-features">
+                            <li>完整的經文背景分析</li>
+                            <li>關鍵詞的原文解釋</li>
+                            <li>生活化的應用問題</li>
+                            <li>個人反思引導</li>
+                        </ul>
+                        <p><strong>用戶回饋：</strong>「以前讀經很多地方不明白，現在有AI助手解釋，更容易理解了！」</p>
+                    </div>
+                </div>
+                
+                <!-- 截圖項目 2: 靈修功能 -->
+                <div class="screenshot-item">
+                    <span class="screenshot-label">靈修引導</span>
+                    <div class="screenshot-image">
+                        <img src="https://via.placeholder.com/500x350/6b8cbc/ffffff?text=靈修引導截圖" alt="AI靈修引導截圖">
+                    </div>
+                    <div class="screenshot-content">
+                        <h3 class="screenshot-title">
+                            <i class="fas fa-pray"></i> 個人化靈修引導
+                        </h3>
+                        <p class="screenshot-description">
+                            根據用戶當天的心情狀態（壓力、喜樂、憂傷），AI推薦合適的經文，
+                            並提供禱告建議和默想問題。
+                        </p>
+                        <ul class="screenshot-features">
+                            <li>情緒感知與回應</li>
+                            <li>相關經文推薦</li>
+                            <li>個人化禱告指引</li>
+                            <li>每日靈修提醒</li>
+                        </ul>
+                        <p><strong>用戶回饋：</strong>「就像有位屬靈導師隨時陪伴，知道我需要的經文和安慰。」</p>
+                    </div>
+                </div>
+                
+                <!-- 截圖項目 3: 閱讀輔助 -->
+                <div class="screenshot-item">
+                    <span class="screenshot-label">閱讀輔助</span>
+                    <div class="screenshot-image">
+                        <img src="https://via.placeholder.com/500x350/25D366/ffffff?text=閱讀輔助截圖" alt="AI閱讀輔助截圖">
+                    </div>
+                    <div class="screenshot-content">
+                        <h3 class="screenshot-title">
+                            <i class="fas fa-book-open"></i> 書籍閱讀輔助
+                        </h3>
+                        <p class="screenshot-description">
+                            用戶閱讀《效法基督》時遇到困難概念，AI提供清晰解釋，
+                            並提出反思問題幫助消化內容。
+                        </p>
+                        <ul class="screenshot-features">
+                            <li>困難概念解釋</li>
+                            <li>章節重點摘要</li>
+                            <li>個人反思問題</li>
+                            <li>相關經文連結</li>
+                        </ul>
+                        <p><strong>用戶回饋：</strong>「以前讀不懂的神學書籍，現在有AI幫忙解釋，收穫很多！」</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 小圖預覽畫廊 -->
+            <div class="screenshot-gallery">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x150/4a6fa5/ffffff?text=對話1" alt="對話範例1">
+                    <div class="gallery-overlay">查經對話</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x150/6b8cbc/ffffff?text=對話2" alt="對話範例2">
+                    <div class="gallery-overlay">靈修引導</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x150/25D366/ffffff?text=對話3" alt="對話範例3">
+                    <div class="gallery-overlay">問題解答</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x150/4a6fa5/ffffff?text=對話4" alt="對話範例4">
+                    <div class="gallery-overlay">閱讀輔助</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 用戶見證區 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">用戶真實體驗分享</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「作為忙碌的上班族，AI信仰助手讓我能在通勤時間靈修，隨時查考經文，信仰生活不再被忙碌擠壓。」</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">張</div>
+                        <div>
+                            <strong>張弟兄</strong>
+                            <p>台北，軟體工程師</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「剛信主時很多聖經不懂，又不好意思一直問人。AI助手耐心解答所有問題，是我最好的信仰啟蒙老師。」</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">李</div>
+                        <div>
+                            <strong>李姊妹</strong>
+                            <p>台中，大學生</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「最喜歡閱讀輔助功能！幫我消化了很多難讀的屬靈書籍，還提出很好的反思問題，讓閱讀更有深度。」</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">王</div>
+                        <div>
+                            <strong>王傳道</strong>
+                            <p>高雄，教會同工</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 聲明 -->
     <section class="disclaimer">
         <div class="container">
@@ -579,6 +1065,78 @@
         
         // 觸發初始動畫
         window.dispatchEvent(new Event('scroll'));
+    </script>
+    <script>
+        // 圖片點擊放大功能
+        document.querySelectorAll('.screenshot-image img, .gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                    cursor: pointer;
+                `;
+                
+                const modalImg = document.createElement('img');
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                modalImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    border-radius: 10px;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                `;
+                
+                modal.appendChild(modalImg);
+                document.body.appendChild(modal);
+                
+                modal.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
+            });
+        });
+        
+        // 滾動動畫
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // 觀察所有截圖項目
+        document.querySelectorAll('.screenshot-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+        
+        // 畫廊項目懸停效果增強
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
