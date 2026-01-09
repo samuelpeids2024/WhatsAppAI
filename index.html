@@ -399,6 +399,61 @@
             justify-content: center;
             font-weight: bold;
         }
+
+        /* 定制化標籤 */
+        .custom-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 10px 0 15px 0;
+            box-shadow: 0 3px 8px rgba(255, 126, 95, 0.3);
+        }
+        
+        /* 定制化功能列表 */
+        .custom-list {
+            list-style: none;
+            margin-top: 10px;
+            padding-left: 0;
+            text-align: left;
+        }
+        
+        .custom-list li {
+            padding: 6px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .custom-list i {
+            color: #25D366;
+            font-size: 0.9rem;
+        }
+        
+        /* 懸停效果增強 */
+        .feature-card:hover .custom-tag {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+        
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .custom-list {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .custom-list li {
+                justify-content: center;
+            }
+        }
         
         /* 響應式設計 */
         @media (max-width: 992px) {
