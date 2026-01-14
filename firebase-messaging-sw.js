@@ -26,6 +26,19 @@
  // messages.
  const messaging = firebase.messaging();
 
+ // Request permission and get token
+  function requestPermissionAndGetToken() {
+    messaging.requestPermission().then(() => {
+      console.log('Notification permission granted.');
+      return messaging.getToken({ vapidKey: "BHc46KlLoJvBJrCCjDERNc7lJr453G6P54pod_NaQjjdy2z_F-0awf1nEN8ncGVS7JzIVsk9lLHfs6TrphZmxgY" }); // Get the FCM device token
+    }).then((token) => {
+      console.log('FCM registration token:', token);
+      // Send the token to your server to store it for sending messages
+    }).catch((err) => {
+      console.error('Unable to get permission to notify.', err);
+    });
+  }
+
 
 // If you would like to customize notifications that are received in the
 // background (Web app is closed or not in browser focus) then you should
