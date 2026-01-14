@@ -1238,6 +1238,30 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./firebase-messaging-sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered with scope:', registration.scope);
+              // 註冊後，才能獲取 token
+              messaging.requestToken({ vapidKey: 'BHc46KlLoJvBJrCCjDERNc7lJr453G6P54pod_NaQjjdy2z_F-0awf1nEN8ncGVS7JzIVsk9lLHfs6TrphZmxgY' })
+                .then((currentToken) => {
+                  if (currentToken) {
+                    console.log('Current FCM token:', currentToken);
+                    // 將 token 儲存或傳送至後端
+                  } else {
+                    console.log('No registration token available.');
+                  }
+                })
+                .catch((err) => {
+                  console.log('An error occurred while retrieving token.', err);
+                });
+            })
+            .catch((err) => {
+              console.log('Service Worker registration failed:', err);
+            });
+        }
+
     </script>
 </body>
 </html>
